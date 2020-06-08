@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: rinkeby
+    source:
+      address: "0x230E84Ef38e98261e9BA479Ddb31bee1F2DEC2dE"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      language: wasm/assemblyscript
+      entities:
+        - NewCommunity
+        - RoleGranted
+        - RoleRevoked
+        - SetCommunityTemplate
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: NewCommunity(indexed address,indexed address)
+          handler: handleNewCommunity
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: SetCommunityTemplate(address)
+          handler: handleSetCommunityTemplate
+      file: ./src/mapping.ts

@@ -1,6 +1,22 @@
-type ExampleEntity @entity {
+type Community @entity {
   id: ID!
-  count: BigInt!
-  creator: Bytes! # address
-  newCommunityAddress: Bytes! # address
+  name: String!
+  symbol: String!
+  address: Bytes!
+  parentCommunity: Community
+  childCommunities: [Community!]
+  isOpen: Boolean!
+  owner: User
+  members: [User!]
+  moderators: [User!]
+  admins: [User!]
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  memberships: [Community!] @derivedFrom(field: "members")
+  moderatorRoles: [Community!] @derivedFrom(field: "moderators")
+  adminRoles: [Community!] @derivedFrom(field: "admins")
+  ownerRoles: [Community!] @derivedFrom(field: "owner")
 }

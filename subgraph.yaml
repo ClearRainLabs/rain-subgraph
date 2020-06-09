@@ -1,12 +1,14 @@
 specVersion: 0.0.2
+description: A protocol for smart communities
+repository: https://github.com/ClearRainLabs/rain-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Contract
-    network: rinkeby
+    name: RainCommunity
+    network: mainnet
     source:
-      address: "0x230E84Ef38e98261e9BA479Ddb31bee1F2DEC2dE"
+      address: "0x0803ef82d73815d9f7327b855c4aF7ff85dD77F8"
       abi: Contract
     mapping:
       kind: ethereum/events
@@ -19,7 +21,7 @@ dataSources:
         - SetCommunityTemplate
       abis:
         - name: Contract
-          file: ./abis/Contract.json
+          file: ./abis/RainCommunity.json
       eventHandlers:
         - event: NewCommunity(indexed address,indexed address)
           handler: handleNewCommunity

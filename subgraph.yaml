@@ -8,19 +8,15 @@ dataSources:
     name: RainCommunity
     network: mainnet
     source:
-      address: "0x373e8fA04c7428dF58FB7D6a896E95aADc74c874"
+      address: "0x9c6A7276F40b18827C052b1999b6E0561F53A5ad"
       abi: Contract
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - NewCommunity
-        - RoleGranted
-        - RoleRevoked
-        - MemberAdded
-        - MemberRemoved
-        - SetCommunityTemplate
+        - Community
+        - User
       abis:
         - name: Contract
           file: ./abis/RainCommunity.json

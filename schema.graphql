@@ -7,9 +7,9 @@ type Community @entity {
   childCommunities: [Community!]
   isOpen: Boolean!
   owner: User
-  members: [User!]
-  moderators: [User!]
-  admins: [User!]
+  members: [User!]!
+  moderators: [User!]!
+  admins: [User!]!
 }
 
 type User @entity {

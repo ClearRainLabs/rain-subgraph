@@ -1,0 +1,5 @@
+import { ByteArray } from '@graphprotocol/graph-ts'
+
+export let OWNER_ROLE = '0xb19546dff01e856fb3f010c267a7b1c60363cf8a4664e21cc89c26224620214e'
+export let ADMIN_ROLE = '0xa49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775'
+export let MODERATOR_ROLE = '0x71f3d55856e4058ed06ee057d79ada615f65cdf5f9ee88181b914225088f834f'

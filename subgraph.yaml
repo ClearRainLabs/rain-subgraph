@@ -27,10 +27,41 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
+        - event: SetCommunityTemplate(address)
+          handler: handleSetCommunityTemplate
         - event: MemberAdded(indexed address,indexed address)
           handler: handleMemberAdded
         - event: MemberRemoved(indexed address,indexed address)
           handler: handleMemberRemoved
+      file: ./src/mapping.ts
+
+templates:
+  - kind: ethereum/contract
+    name: RainCommunity
+    network: mainnet
+    source:
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Community
+        - User
+      abis:
+        - name: Contract
+          file: ./abis/RainCommunity.json
+      eventHandlers:
+        - event: NewCommunity(indexed address,indexed address)
+          handler: handleNewCommunity
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
         - event: SetCommunityTemplate(address)
           handler: handleSetCommunityTemplate
+        - event: MemberAdded(indexed address,indexed address)
+          handler: handleMemberAdded
+        - event: MemberRemoved(indexed address,indexed address)
+          handler: handleMemberRemoved
       file: ./src/mapping.ts

@@ -1,6 +1,7 @@
 import { Contract, NewCommunity } from "../generated/RainCommunity/Contract"
 import { Address, log } from '@graphprotocol/graph-ts'
-import { Community, User } from "../generated/schema"
+import { Community, User } from '../generated/schema'
+import { RainCommunity } from '../generated/templates'
 
 export function processChildCommunity(event: NewCommunity, parent: Community): Community {
   log.info("PROCESSING CHILD COMMUNITY: {}, \nParent Community: {}", [
@@ -9,6 +10,7 @@ export function processChildCommunity(event: NewCommunity, parent: Community): C
   ])
   let childAddress = event.params.newCommunityAddress
   let childCommunity = initCommunity(childAddress)
+  RainCommunity.create(childAddress)
 
   childCommunity.save()
   return childCommunity

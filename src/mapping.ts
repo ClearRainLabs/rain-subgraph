@@ -86,7 +86,6 @@ export function handleRoleRevoked(event: RoleRevoked): void {
 }
 
 export function handleMemberAdded(event: MemberAdded): void {
-  log.debug('HANDLE MEMBER ADDED CALLED: {}', [event.address.toHex()])
   let address = event.address
   let community = Community.load(address.toHex())
 

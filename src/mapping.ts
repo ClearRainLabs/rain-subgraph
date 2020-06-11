@@ -14,7 +14,6 @@ import { processChildCommunity, processUser, initCommunity, filterUserArr
 import { OWNER_ROLE, ADMIN_ROLE, MODERATOR_ROLE } from './constants'
 
 export function handleNewCommunity(event: NewCommunity): void {
-  log.info("HANDLING A NEW COMMUNITY: {}", [event.params.newCommunityAddress.toHex()])
   let parentAddress = event.address
   let parentCommunity = Community.load(parentAddress.toHex())
 
@@ -23,7 +22,6 @@ export function handleNewCommunity(event: NewCommunity): void {
   }
 
   let childCommunity = processChildCommunity(event, parentCommunity as Community)
-  log.info("CHILD COM JUST PROCESSED: {}", [childCommunity.address.toHex()])
 
   let children = parentCommunity.childCommunities
   children.push(childCommunity.id)
@@ -33,7 +31,6 @@ export function handleNewCommunity(event: NewCommunity): void {
 }
 
 export function handleRoleGranted(event: RoleGranted): void {
-  log.debug('ROLE GRANTED CALLED: {}', [event.params.role.toHex()])
   let address = event.address
   let community = Community.load(address.toHex())
 

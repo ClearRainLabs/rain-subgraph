@@ -4,10 +4,6 @@ import { Community, User } from '../generated/schema'
 import { RainCommunity } from '../generated/templates'
 
 export function processChildCommunity(event: NewCommunity, parent: Community): Community {
-  log.info("PROCESSING CHILD COMMUNITY: {}, \nParent Community: {}", [
-    event.params.newCommunityAddress.toHex(),
-    parent.id
-  ])
   let childAddress = event.params.newCommunityAddress
   let childCommunity = initCommunity(childAddress)
   RainCommunity.create(childAddress)
